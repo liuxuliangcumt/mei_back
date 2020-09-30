@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:mei_back/page/home_magazine.dart';
+import 'package:mei_back/page/loginandregister/login.dart';
 import 'package:mei_back/src/colors/themecolors.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
               iconTheme: IconThemeData(color: Colors.grey)),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: MyHomePage(title: 'Flutter Demo Home Page'),
+        home: Login(),
       ),
     );
   }

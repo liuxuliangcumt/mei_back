@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mei_back/netUtil/NetUtil.dart';
 
 //个人信息
 class RecoverManInfo extends StatefulWidget {
@@ -11,6 +12,13 @@ class RecoverManInfo extends StatefulWidget {
 class _RecoverManInfoState extends State<RecoverManInfo> {
   TextStyle style1 = TextStyle(color: Color(0xff777777), fontSize: 15);
   TextStyle style2 = TextStyle(fontSize: 15);
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getInfoData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -264,5 +272,15 @@ class _RecoverManInfoState extends State<RecoverManInfo> {
         },
       ),
     );
+  }
+
+  void getInfoData() {
+    NetUtil.get(
+        "http://211.149.198.206:9501/recovery/getRecoverInfo", {"uid": 12},
+        (response) {
+      print(response);
+    }, (errorMsg) {
+      print(errorMsg);
+    });
   }
 }

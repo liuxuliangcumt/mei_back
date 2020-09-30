@@ -8,6 +8,7 @@ import 'package:mei_back/beans/homenews.dart';
 import 'package:mei_back/netUtil/NetUtil.dart';
 
 import 'ConsoleDeskOnline.dart';
+import 'home_control.dart';
 
 class HomeMagazine extends StatefulWidget {
   @override
@@ -56,7 +57,9 @@ class HomeMagazineState extends State<HomeMagazine>
             Container(
                 child: firstBanner(swiperDataList),
                 margin: EdgeInsets.only(top: 26, bottom: 25)),
-            Padding(
+
+            Container(
+              alignment: Alignment.topLeft,
               padding: EdgeInsets.only(left: 22),
               child: Text(
                 '管理控制台',
@@ -332,8 +335,8 @@ class HomeMagazineState extends State<HomeMagazine>
           ),
           Positioned(
             child: deskItem("网约工", () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (c) => ConsoleDeskOnline()));
+              /*   Navigator.push(context,
+                  MaterialPageRoute(builder: (c) => ConsoleDeskOnline()));*/
             }),
             right: 0,
           ),
@@ -355,9 +358,37 @@ class HomeMagazineState extends State<HomeMagazine>
     return InkWell(
       onTap: () {
         d.call();
+        Navigator.push(
+            context, MaterialPageRoute(builder: (c) => HomeControl()));
       },
       child: Container(
-        child: Text(name),
+        height: 48,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  "控制台",
+                  style: TextStyle(color: Color(0xff787878), fontSize: 12),
+                )
+              ],
+            ),
+            Icon(
+              Icons.games,
+              size: 48,
+            )
+          ],
+        ),
       ),
     );
   }
